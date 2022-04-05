@@ -1,45 +1,24 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { publicRoutes } from "./routes";
+import { MAIN_PAGE_ROUTE } from "./utils/consts";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    return (
+        <div>
+            <Navbar />
+            <Routes>
+                {
+                    publicRoutes.map( ( {path, Component} ) =>
+                        <Route key={path} path={path} element={<Component />} />
+                    )
+                }
+                <Route path="/:somePath" element={<Navigate to={MAIN_PAGE_ROUTE} replace={true}/>} />
+            </Routes>
+        </div>
+    );
 }
 
-export default App
+export default App;
