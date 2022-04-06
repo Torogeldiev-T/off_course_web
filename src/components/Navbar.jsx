@@ -23,6 +23,7 @@ const pages = [
 ];
 
 const logo = {name: 'TILEKSUS AMOGUS PARAGONUS INDOMINUS ADAPARE INTERIMO', path: MAIN_PAGE_ROUTE}
+
 const settings = ["Profile", "Account", "Dashboard", "Sign out"];
 
 const Navbar = () => {
@@ -166,7 +167,8 @@ const Navbar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
+                            { user.isAuth &&
+                                settings.map((setting) => (
                                 <MenuItem
                                     key={setting}
                                     onClick={handleCloseUserMenu}
