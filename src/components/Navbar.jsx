@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,13 +11,25 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import userIcon from "../assets/barash.png";
+import { useContext, useState } from "react";
+import { Context } from "../main";
+import {COURSES_ROUTE, MAIN_PAGE_ROUTE} from '../utils/consts';
+import { NavLink } from "react-router-dom";
 
-const pages = ["Courses", "About", "List of failed exams & midterms"];
+const pages = [
+    {id: 0, name: 'Courses', path: COURSES_ROUTE},
+    {id: 1, name: 'About', path: COURSES_ROUTE},
+    {id: 2, name: 'List of failed exams & midterms', path: COURSES_ROUTE},
+];
+
+const logo = {name: 'TILEKSUS AMOGUS PARAGONUS INDOMINUS ADAPARE INTERIMO', path: MAIN_PAGE_ROUTE}
 const settings = ["Profile", "Account", "Dashboard", "Sign out"];
 
 const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const {user} = useContext(Context)
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -45,7 +56,9 @@ const Navbar = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
                     >
-                        LOGO
+                        <NavLink to={logo.path}>
+                            {logo.name}
+                        </NavLink>
                     </Typography>
 
                     <Box
@@ -82,14 +95,16 @@ const Navbar = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            {pages.map((page) => (
+                            {pages.map((page, i) => (
                                 <MenuItem
-                                    key={page}
+                                    key={i}
                                     onClick={handleCloseNavMenu}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
+                                    <NavLink to={page.path}>
+                                        <Typography textAlign="center">
+                                            {page.name}
+                                        </Typography>
+                                    </NavLink>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -103,7 +118,9 @@ const Navbar = () => {
                             display: { xs: "flex", md: "none" },
                         }}
                     >
-                        LOGO
+                        <NavLink to={logo.path}>
+                            {logo.name}
+                        </NavLink>
                     </Typography>
                     <Box
                         sx={{
@@ -111,13 +128,15 @@ const Navbar = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        {pages.map((page) => (
+                        {pages.map((page, i) => (
                             <Button
-                                key={page}
+                                key={i}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
-                                {page}
+                                <NavLink to={page.path}>
+                                    {page.name}
+                                </NavLink>
                             </Button>
                         ))}
                     </Box>
