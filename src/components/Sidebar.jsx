@@ -1,4 +1,3 @@
-import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,14 +14,17 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import { useContext, useState } from "react";
+import { Context } from "../App";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
     const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const { sidebar } = useContext(Context);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -33,20 +35,18 @@ function ResponsiveDrawer(props) {
             <Toolbar />
             <Divider />
             <List>
-                {["Inbox", "My courses", "Starred", "All courses"].map(
-                    (text, index) => (
-                        <ListItem button key={text}>
+            {
+                sidebar.map((item, index) => (
+                    <NavLink to={item.path} key={item.name}>
+                        <ListItem button >
                             <ListItemIcon>
-                                {
-                                    index === 0 && <InboxIcon /> ||
-                                    index === 1 && <MenuBookOutlinedIcon /> ||
-                                    index === 2 && <StarBorderIcon />
-                                }
+                                {item.icon}
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={item.name} />
                         </ListItem>
-                    )
-                )}
+                    </NavLink>
+                ))
+            }
             </List>
             <Divider />
             <List>
@@ -86,7 +86,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        TILEKSUS AMOBUS PARAGONUS INTERIMO ADAPARE CONSENSUS!
                     </Typography>
                 </Toolbar>
             </AppBar>
