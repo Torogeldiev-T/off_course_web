@@ -9,10 +9,10 @@ const Courses = () => {
             
             <div className="">
 
-                <TextField label="Search here..." variant="standard"/>
+                <TextField label="Search here..." variant="standard" autoComplete="off"/>
                 
                 <h1 className="text-3xl text-violet-700 font-bold mt-8">
-                    All courses:
+                    My courses:
                 </h1>
 
                 <div className="flex flex-row gap-6 my-4 text-lg text-gray-600">
@@ -49,7 +49,7 @@ const Courses = () => {
                 </div>
             </div>
 
-            <div className="m-4 w-1/3">
+            <div className="m-4 w-1/3 hidden lg:flex flex-wrap flex-col">
                 <div className="text-xl text-violet-600 font-bold mt-12">
                     Most popular courses
                 </div>

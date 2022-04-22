@@ -17,12 +17,16 @@ import Typography from "@mui/material/Typography";
 import { useContext, useState } from "react";
 import { Context } from "../App";
 import { NavLink } from "react-router-dom";
+import { Button, Tooltip, Avatar, Menu, MenuItem } from "@mui/material";
+import admin from "../assets/admin.png";
 
 const drawerWidth = 240;
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveDrawer(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const { sidebar } = useContext(Context);
 
@@ -30,23 +34,27 @@ function ResponsiveDrawer(props) {
         setMobileOpen(!mobileOpen);
     };
 
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
     const drawer = (
         <div className="">
             <Toolbar />
             <Divider />
             <List>
-            {
-                sidebar.map((item, index) => (
+                {sidebar.map((item, index) => (
                     <NavLink to={item.path} key={item.name}>
-                        <ListItem button >
-                            <ListItemIcon>
-                                {item.icon}
-                            </ListItemIcon>
+                        <ListItem button>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.name} />
                         </ListItem>
                     </NavLink>
-                ))
-            }
+                ))}
             </List>
             <Divider />
             <List>
@@ -75,7 +83,7 @@ function ResponsiveDrawer(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar className="mr-12 flex gap-5">
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -85,9 +93,59 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="div"
+                        sx={{ flexGrow: 1 }}
+                    >
                         TILEKSUS AMOBUS PARAGONUS INTERIMO ADAPARE CONSENSUS!
                     </Typography>
+                    {/* <Button variant="outlined" color="warning">ADMIN</Button> */}
+
+                    <div className="rounded border-2 p-1 px-2 hover:bg-blue-400 hover:scale-[99%] transition-all">
+                        <button>
+                            ADMIN
+                        </button>
+                    </div>
+
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <IconButton
+                                onClick={handleOpenUserMenu}
+                                sx={{ p: 0 }}
+                            >
+                                <Avatar alt="User" src={admin} />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: "45px" }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {settings.map((setting) => (
+                                <MenuItem
+                                    key={setting}
+                                    onClick={handleCloseUserMenu}
+                                >
+                                    <Typography textAlign="center">
+                                        {setting}
+                                    </Typography>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Box>
                 </Toolbar>
             </AppBar>
             <Box
