@@ -14,16 +14,28 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Context } from "../App";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Tooltip, Avatar, Menu, MenuItem } from "@mui/material";
 import admin from "../assets/admin.png";
+import { PROFILE_ROUTE, MAIN_PAGE_ROUTE } from "../utils/consts";
 
 const drawerWidth = 240;
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+    { id: 0, name: "Profile", path: PROFILE_ROUTE },
+    { id: 1, name: "Settings", path: PROFILE_ROUTE },
+    { id: 2, name: "Dashboard", path: PROFILE_ROUTE },
+    {
+        id: 3,
+        name: "блэк бакарди танци в моей кровати не",
+        path: PROFILE_ROUTE,
+    },
+    { id: 4, name: "Sign out", path: MAIN_PAGE_ROUTE },
+];
 
 function ResponsiveDrawer(props) {
+    const navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -41,6 +53,10 @@ function ResponsiveDrawer(props) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    useEffect(() => {
+        setMobileOpen(!true);
+    }, [navigate]);
 
     const drawer = (
         <div className="">
@@ -83,7 +99,7 @@ function ResponsiveDrawer(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar className="mr-12 flex gap-5">
+                <Toolbar className="sm:mr-12 flex gap-5">
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -104,9 +120,7 @@ function ResponsiveDrawer(props) {
                     {/* <Button variant="outlined" color="warning">ADMIN</Button> */}
 
                     <div className="rounded border-2 p-1 px-2 hover:bg-blue-400 hover:scale-[99%] transition-all">
-                        <button>
-                            ADMIN
-                        </button>
+                        <button>ADMIN</button>
                     </div>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -134,15 +148,16 @@ function ResponsiveDrawer(props) {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
+                            {settings.map((setting, index) => (
+                                <NavLink to={setting.path} key={index}>
+                                    <MenuItem
+                                        onClick={handleCloseUserMenu}
+                                    >
+                                        <Typography textAlign="center">
+                                            {setting.name}
+                                        </Typography>
+                                    </MenuItem>
+                                </NavLink>
                             ))}
                         </Menu>
                     </Box>

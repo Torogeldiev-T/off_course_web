@@ -33,10 +33,11 @@ const courses = [
         info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
         creator: "Tilek Torogeldiev",
         teachers: ["Tilek", "And others"],
+        completed: 78
     },
-    { id: 1, name: "John cena", creator: "John Cena", teachers: ["John Cena"] },
-    { id: 2, name: "nil desperandum", creator: "ded mazay", teachers: ["xn"] },
-    { id: 3, name: "East West", creator: "unknown", teachers: [] },
+    { id: 1, name: "John cena", creator: "John Cena", teachers: ["John Cena"], completed: 13 },
+    { id: 2, name: "nil desperandum", creator: "ded mazay", teachers: ["xn"], completed: 99 },
+    { id: 3, name: "East West", creator: "unknown", teachers: [], completed: 55 },
 ];
 
 function App() {
