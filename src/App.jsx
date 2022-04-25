@@ -40,9 +40,30 @@ const courses = [
     { id: 3, name: "East West", creator: "unknown", teachers: [], completed: 55 },
 ];
 
+const profile = {
+    name: 'Johny The Anarchyst',
+    about: 'Overcoming failures',
+    email: 'johndoe@mail.com',
+    courses: [
+        {
+            id: 0,
+            name: "Easily failing Tok's courses",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            creator: "Tilek Torogeldiev",
+            teachers: ["Tilek", "And others"],
+            completed: 78
+        },
+        { id: 1, name: "John cena", creator: "John Cena", teachers: ["John Cena"], completed: 13 },
+        { id: 2, name: "nil desperandum", creator: "ded mazay", teachers: ["xn"], completed: 99 },
+        { id: 3, name: "East West", creator: "unknown", teachers: [], completed: 55 },
+    ],
+    interests: ['Networking', 'Web development', 'Social work'],
+    location: 'Bishkek'
+}
+
 function App() {
     return (
-        <Context.Provider value={{ user, courses, sidebar }}>
+        <Context.Provider value={{ user, courses, sidebar, profile }}>
             <div className="flex">
                 <Sidebar />
                 <Routes>

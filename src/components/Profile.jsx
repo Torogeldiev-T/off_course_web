@@ -4,7 +4,7 @@ import {LinearProgress} from '@mui/material';
 
 const Profile = () => {
 
-    const {courses} = useContext(Context)
+    const {profile} = useContext(Context)
 
     const [currentPage, setCurrentPage] = useState("about")
 
@@ -17,9 +17,9 @@ const Profile = () => {
                     <div className="profile-header flex w-full">
                         <div className="rounded-full w-28 h-28 -mt-16 bg-red-400"></div>
                         <div className="mx-6 flex flex-col">
-                            <span className="text-xl font-bold">John Doe</span>
+                            <span className="text-xl font-bold">{profile.name}</span>
                             <span className="text-sm text-gray-500">
-                                Overcoming failures
+                                {profile.about}
                             </span>
                         </div>
 
@@ -37,7 +37,7 @@ const Profile = () => {
                             </div>
                             <div>
                             {
-                                courses.map( (course, index) => (
+                                profile.courses.map( (course, index) => (
                                     <div key={index} className="flex flex-col m-2 my-4 rounded-lg border bg-white shadow-md p-2">
                                         <div className="flex flex-col justify-between gap-4"> 
                                             <span className="text-fuchsia-900 font-bold"> {course.name} </span>
