@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {Context} from '../App';
 import {LinearProgress} from '@mui/material';
 
 const Profile = () => {
 
     const {courses} = useContext(Context)
+
+    const [currentPage, setCurrentPage] = useState("about")
 
     return (
         <div className="flex p-4 pb-16 mt-16 bg-pink-100 w-full">
@@ -26,9 +28,13 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="mt-12 bg-slate-100 rounded-xl p-4">
+                    <div className="mt-12  bg-slate-100 w-full rounded-xl p-4">
                         <div>
-                            <span className="text-xl text-violet-700 font-bold m-2"> Courses Progress </span>
+                            <div className="mb-8 m-2 flex flex-row gap-5">
+                                <span className={`text-xl cursor-pointer ${currentPage === "about" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setCurrentPage("about")}> About Me </span>
+                                <span className={`text-xl cursor-pointer ${currentPage === "courses" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setCurrentPage("courses")}> Courses Progress </span>
+                                <span className={`text-xl cursor-pointer ${currentPage === "edit" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setCurrentPage("edit")}> Edit </span>
+                            </div>
                             <div>
                             {
                                 courses.map( (course, index) => (
