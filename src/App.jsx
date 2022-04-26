@@ -41,9 +41,9 @@ const courses = [
 ];
 
 const profile = {
-    name: 'Johny The Anarchyst',
-    about: 'Overcoming failures',
-    email: 'johndoe@mail.com',
+    'Full name': 'Johny The Anarchyst',
+    'Status': 'Overcoming failures',
+    'Email': 'johndoe@mail.com',
     courses: [
         {
             id: 0,
@@ -57,10 +57,10 @@ const profile = {
         { id: 2, name: "nil desperandum", creator: "ded mazay", teachers: ["xn"], completed: 99 },
         { id: 3, name: "East West", creator: "unknown", teachers: [], completed: 55 },
     ],
-    university: 'American University of Central Asia',
-    department: 'Software Engineering',
+    'University': 'American University of Central Asia',
+    'Department': 'Software Engineering',
     interests: ['Networking', 'Web development', 'Social work'],
-    location: 'Bishkek'
+    'Location': 'Bishkek'
 }
 
 function App() {

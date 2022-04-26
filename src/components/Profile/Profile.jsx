@@ -30,7 +30,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="mt-12  bg-slate-100 w-full rounded-xl p-4">
+                    <div className="mt-12  bg-slate-50 w-full rounded-xl p-4">
                         <div>
                             <div className="mb-8 m-2 flex flex-row gap-5">
                                 <span className={`text-xl cursor-pointer ${profileState === "about" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setProfileState("about")}> About Me </span>

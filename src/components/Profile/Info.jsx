@@ -2,28 +2,34 @@ import React from "react";
 
 const Info = ({ profile }) => {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-row">
 
-            <div>
-                <span className="m-2 text-lg font-bold "> Interests </span>
-                <div className="flex flex-row">
-                    {profile.interests.map((item, i) => (
-                        <div key={i} className="p-1 px-2 m-2 text-white bg-blue-400 rounded-full">
-                            {item}
-                        </div>
-                    ))}
-                </div>
+            <div className="flex flex-col w-1/2">
+                {Object.keys(profile).map(
+                    (key, index) =>
+                        !Array.isArray(profile[key]) && (
+                            <div
+                                key={index}
+                                className="w-full border-b-[3px] p-3 "
+                            >
+                                <b>{key}</b>
+                            </div>
+                        )
+                )}
             </div>
-
-            <div>
-                <span className="m-2 text-lg font-bold"> Institution & Department </span>
-                <div className="m-2 text-gray-600"> <b>{profile.university},</b> {profile.department} </div>
+            <div className="flex flex-col w-full ">
+                {Object.keys(profile).map(
+                    (key, index) =>
+                        !Array.isArray(profile[key]) && (
+                            <div
+                                key={index}
+                                className="w-full border-b-[3px] p-3 text-gray-600"
+                            >
+                                {profile[key]}
+                            </div>
+                        )
+                )}
             </div>
-
-            <div className="m-2 text-lg">
-                Location: <b>{profile.location}</b>
-            </div>
-
         </div>
     );
 };
