@@ -57,6 +57,8 @@ const profile = {
         { id: 2, name: "nil desperandum", creator: "ded mazay", teachers: ["xn"], completed: 99 },
         { id: 3, name: "East West", creator: "unknown", teachers: [], completed: 55 },
     ],
+    university: 'American University of Central Asia',
+    department: 'Software Engineering',
     interests: ['Networking', 'Web development', 'Social work'],
     location: 'Bishkek'
 }

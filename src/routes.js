@@ -1,6 +1,6 @@
 import Courses from "./components/Courses";
 import Home from "./components/Home";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
 import { MAIN_PAGE_ROUTE, COURSES_ROUTE, PROFILE_ROUTE } from "./utils/consts";
 
 export const publicRoutes = [
