@@ -30,20 +30,22 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="mt-12  bg-slate-50 w-full rounded-xl p-4">
-                        <div>
+                    <div className="flex w-1/2 mt-12  bg-slate-50  rounded-xl p-4">
+                        <div className="flex flex-col w-full">
                             <div className="mb-8 m-2 flex flex-row gap-5">
                                 <span className={`text-xl cursor-pointer ${profileState === "about" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setProfileState("about")}> About Me </span>
                                 <span className={`text-xl cursor-pointer ${profileState === "courses" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setProfileState("courses")}> Courses Progress </span>
                                 <span className={`text-xl cursor-pointer ${profileState === "edit" ? "text-violet-700 border-b-2 border-b-violet-700 " : "text-gray-700"} `} onClick={() => setProfileState("edit")}> Edit </span>
                             </div>
                             
+                            <div className="">
                             {
                                 profileState === "about" && <Info profile={profile} /> ||
                                 profileState === "courses" && <Progress courses={profile.courses} /> ||
                                 profileState === "edit" && <Progress courses={profile.courses} />
-
+                                
                             }
+                            </div>
                         </div>
                     </div>
                 </div>
