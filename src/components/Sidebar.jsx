@@ -23,7 +23,7 @@ import { PROFILE_ROUTE, MAIN_PAGE_ROUTE } from "../utils/consts";
 
 const drawerWidth = 240;
 const settings = [
-    { id: 0, name: "Profile", path: PROFILE_ROUTE },
+    { id: 0, name: "Profile", path: PROFILE_ROUTE + '/1' },
     { id: 1, name: "Settings", path: PROFILE_ROUTE },
     { id: 2, name: "Dashboard", path: PROFILE_ROUTE },
     {
