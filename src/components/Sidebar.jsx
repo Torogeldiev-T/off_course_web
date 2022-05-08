@@ -22,19 +22,23 @@ import admin from "../assets/admin.png";
 import { PROFILE_ROUTE, MAIN_PAGE_ROUTE } from "../utils/consts";
 
 const drawerWidth = 240;
-const settings = [
-    { id: 0, name: "Profile", path: PROFILE_ROUTE + '/1' },
-    { id: 1, name: "Settings", path: PROFILE_ROUTE },
-    { id: 2, name: "Dashboard", path: PROFILE_ROUTE },
-    {
-        id: 3,
-        name: "блэк бакарди танци в моей кровати не",
-        path: PROFILE_ROUTE,
-    },
-    { id: 4, name: "Sign out", path: MAIN_PAGE_ROUTE },
-];
 
 function ResponsiveDrawer(props) {
+    
+    const { user } = useContext(Context);
+    
+    const settings = [
+        { id: 0, name: "Profile", path: PROFILE_ROUTE + '/' + user.id },
+        { id: 1, name: "Settings", path: PROFILE_ROUTE },
+        { id: 2, name: "Dashboard", path: PROFILE_ROUTE },
+        {
+            id: 3,
+            name: "блэк бакарди танци в моей кровати не",
+            path: PROFILE_ROUTE,
+        },
+        { id: 4, name: "Sign out", path: MAIN_PAGE_ROUTE },
+    ];
+
     const navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
