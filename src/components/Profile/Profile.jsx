@@ -11,14 +11,13 @@ const Profile = () => {
     const { user } = useContext(Context);
 
     const [userData, setUserData] = useState({});
-    const [profileState, setProfileState] = useState("about");
 
     useEffect(() => {
         getUserProfile(user.id).then(({ args }) => setUserData(args));
     }, []);
 
     return (
-        <div className="flex flex-row flex-wrap lg:flex-nowrap gap-4 p-4 sm:pr-12 mt-16 bg-gray-200 w-full">
+        <div className="flex flex-row flex-wrap lg:flex-nowrap gap-4 p-4 pb-12 sm:pr-12 mt-16 bg-gray-200 w-full h-screen">
             <div className="flex flex-col gap-4 w-full sm:w-auto">
                 <View profile={userData}/>
                 <div className="p-2 bg-white"></div>
