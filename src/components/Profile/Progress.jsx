@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { LinearProgress , Button} from "@mui/material";
+import { LinearProgress, Button } from "@mui/material";
 
 const Progress = ({ courses }) => {
-    const temp = courses.slice(0, 2);
-    const [clippedCourses, setSlippedCourses] = useState([...temp]);
-
+    const [clippedCourses, setSlippedCourses] = useState([]);
 
     useEffect(() => {
-        console.log(temp)
-    }, [])
-    
+        // console.log(courses)
+        const temp = courses.slice(0, 2);
+        setSlippedCourses([...temp]);
+    }, [courses]);
+
     return (
         <div className="flex flex-col gap-2">
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
@@ -45,8 +45,25 @@ const Progress = ({ courses }) => {
                 ))}
             </div>
 
-            <div className="ml-auto">
-                <Button className="text-blue-500" onClick={() => setSlippedCourses([...courses])}>See all</Button>
+            <div className="ml-auto mt-4">
+                {clippedCourses.length === 2 ? (
+                    <Button
+                        variant="contained"
+                        className="text-blue-500"
+                        onClick={() => setSlippedCourses([...courses])}
+                    >
+                        See all
+                    </Button>
+                ) : (
+                    <Button
+                        variant="contained"
+                        onClick={() =>
+                            setSlippedCourses([...courses.slice(0, 2)])
+                        }
+                    >
+                        Hide
+                    </Button>
+                )}
             </div>
         </div>
     );
