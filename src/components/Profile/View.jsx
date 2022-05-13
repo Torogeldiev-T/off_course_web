@@ -4,8 +4,12 @@ import { Button } from "@mui/material";
 const View = ({ profile }) => {
     return (
         <div className="flex flex-wrap flex-col gap-1 items-center p-4 px-4 sm:px-16 bg-white ">
-            <div className="rounded-full mb-4 w-24 h-24 bg-red-600">
-                <img src="" alt="" />
+            <div className="rounded-full mb-0 w-32 h-32">
+                <img 
+                    src="https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg"
+                    alt=""
+                    className="rounded-full w-full h-full"
+                />
             </div>
             <span className="text-xl font-bold text-violet-700">
                 {profile["Full name"]}
